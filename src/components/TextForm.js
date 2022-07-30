@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-const TextForm = () => {
+const TextForm = (props) => {
     const [text , setText] = useState("Enter Your Text For Conversion");
     
     const onChangeHandler = (e) => {
@@ -21,16 +21,27 @@ const TextForm = () => {
         console.log("Converted to Lower Case Successfully");
     }
 
+    const TextReset = () => {
+        let textreset = "";
+        setText(textreset);
+        console.log("Your Text Area is Clear Now");
+    }
+
+
   return (
     <>
-        <div className="container my-5">
+        <div className="container my-2" style = {{color : props.mode === 'dark' ? 'white' : 'black'}}>
             <h1 className="">Enter Your Text Below</h1>
             <div className="mb-3">
-                <textarea className="form-control" id="textforconversion" value={text} onChange={onChangeHandler} rows="15" ></textarea>
+                <textarea className="form-control" id="textforconversion" value={text} onChange={onChangeHandler} style = {{backgroundColor : props.mode === 'dark' ? '#140646' : 'white' , color : props.mode === 'dark' ? 'white' : 'black'}} rows="15" ></textarea>
             </div>
 
-            <button type="button" className="btn btn-info me-4 mt-2" onClick={ConvertToUpcase}>Convert To UpperCase</button>
-            <button type="button" className="btn btn-success mt-2" onClick={ConvertToLocase}>Convert To LowerCase</button>
+            <button type="button" className="btn btn-info mx-2 mt-2" onClick={ConvertToUpcase}>Convert To UpperCase</button>
+            <button type="button" className="btn btn-success mx-2 mt-2" onClick={ConvertToLocase}>Convert To LowerCase</button>
+            <button type="button" className="btn btn-warning mx-2 mt-2" onClick={TextReset}>Clear Now</button>
+        </div>
+
+        <div className="container" style = {{color : props.mode === 'dark' ? 'white' : 'black'}}>
             <div className="row d-flex justify-content-between">
                 <div className='col-md-6'>
                     <h3 className="my-4">Text Conversion Summery :-</h3>
@@ -45,6 +56,9 @@ const TextForm = () => {
                 
             </div>
         </div>
+
+        
+
     </>
   )
 }
