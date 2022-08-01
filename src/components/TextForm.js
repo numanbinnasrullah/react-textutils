@@ -13,18 +13,24 @@ const TextForm = (props) => {
         let ConvertToUpcase = text.toUpperCase();
         setText(ConvertToUpcase);
         console.log("Converted to Upper Case Successfully");
+
+        props.showAlert("Converted to Upper Case Successfully", "success");
     }
 
     const ConvertToLocase = () => {
         let ConvertToLocase = text.toLowerCase();
         setText(ConvertToLocase);
         console.log("Converted to Lower Case Successfully");
+
+        props.showAlert("Converted to Lower Case Successfully", "success");
     }
 
     const TextReset = () => {
         let textreset = "";
         setText(textreset);
         console.log("Your Text Area is Clear Now");
+
+        props.showAlert("Booom....! Text area clear", "success");
     }
 
 
